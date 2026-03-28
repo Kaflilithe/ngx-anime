@@ -276,12 +276,12 @@
       }
       <h1>Hello, Friend and not</h1>
       @if (show()) {
-        <p
-          [animeEnter]="{ opacity: [0, 1], duration: 600 }"
-          [animeLeave]="{ opacity: 0, filter: 'blur(5px)', duration: 250 }"
+        <div
+          [animeEnter]="{ opacity: [0, 1], duration: 600, height: [0, 30] }"
+          [animeLeave]="{ opacity: 0, filter: 'blur(5px)', height: 0, duration: 250 }"
         >
           Congratulations! Your app is running. 🎉
-        </p>
+        </div>
       }
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
@@ -390,6 +390,7 @@
   >
     <div>
       <h2>I am dialog epta</h2>
+      <button (click)="dialog.set(!dialog())">close dialog</button>
     </div>
   </div>
 }

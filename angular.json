@@ -79,6 +79,32 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "ngx-anime": {
+      "projectType": "library",
+      "root": "projects/ngx-anime",
+      "sourceRoot": "projects/ngx-anime/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-anime/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-anime/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ngx-anime/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

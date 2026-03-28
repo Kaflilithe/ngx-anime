@@ -1,7 +1,6 @@
 import { AnimationCallbackEvent, ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AnimeEnter } from "./shared/anime-enter";
-import { AnimeLeave } from "./shared/anime-leave";
+import { AnimeEnter, AnimeLeave } from '../../projects/ngx-anime/src/public-api';
 
 @Component({
   selector: 'app-root',

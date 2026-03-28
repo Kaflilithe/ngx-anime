@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-lib": "ng build ngx-anime",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ng-anime": "node dist/ng-anime/server/server.mjs"

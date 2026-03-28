@@ -1,6 +1,8 @@
 {
-  "name": "ngx-anime",
+  "name": "ngx-animejs",
   "version": "0.0.1",
+  "author": "al-march",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": ">=21.0.0",
     "@angular/core": ">=21.0.0",

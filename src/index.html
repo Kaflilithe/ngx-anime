@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
+
+  <script>
+    const saved = localStorage.getItem('DARK_MODE_DEFAULT_KEY');
+    const isDark = saved
+      ? JSON.parse(saved)
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+  </script>
+
   <body>
     <app-root></app-root>
   </body>

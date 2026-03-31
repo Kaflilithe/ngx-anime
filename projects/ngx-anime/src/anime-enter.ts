@@ -3,7 +3,6 @@ import { AfterViewInit, Directive, ElementRef, inject, input, PLATFORM_ID } from
 import { animate } from 'animejs';
 import { AnimeParams } from './tools';
 
-
 @Directive({
   selector: '[animeEnter]',
 })
@@ -15,10 +14,12 @@ export class AnimeEnter implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
-      const params = this.animeEnter();
-      if (params && this.elementRef.nativeElement) {
-        animate(this.elementRef.nativeElement, params);
-      }
+      queueMicrotask(() => {
+        const params = this.animeEnter();
+        if (params && this.elementRef.nativeElement) {
+          animate(this.elementRef.nativeElement, params);
+        }
+      });
     }
   }
 }

@@ -38,19 +38,13 @@
       <div class="content">
         @switch (activeTab()) {
           @case (tabType.HTML) {
-            <div>
-              <app-highlight clean lang="angular-html" [code]="html()" />
-            </div>
+            <app-highlight clean lang="angular-html" [code]="html()" />
           }
           @case (tabType.TS) {
-            <div>
-              <app-highlight clean lang="typescript" [code]="ts()" />
-            </div>
+            <app-highlight clean lang="typescript" [code]="ts()" />
           }
           @case (tabType.SCSS) {
-            <div>
-              <app-highlight clean lang="scss" [code]="scss()" />
-            </div>
+            <app-highlight clean lang="scss" [code]="scss()" />
           }
         }
       </div>

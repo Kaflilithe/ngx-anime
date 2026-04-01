@@ -1,19 +1,20 @@
-<button class="btn" (click)="show.set(!show())">Toggle</button>
-<div class="py-3"></div>
+<div class="flex flex-col gap-3 w-25">
+  <button class="btn btn-ghost" (click)="show.set(!show())">Toggle</button>
 
-@if (show()) {
-  <div
-    [animeEnter]="{
-      height: [0, 40],
-      ease: 'outBack(1.7)',
-      duration: 150,
-    }"
-    [animeLeave]="{
-      height: 0,
-      ease: 'inBack(1.7)',
-      duration: 200
-    }"
-  >
-    <img class="w-full h-full" src="https://ngx-anime.vercel.app/angular-logo.svg" alt="angular logo">
-  </div>
-}
+  @if (show()) {
+    <div
+      [animeEnter]="{
+        height: [0, 40],
+        ease: 'outBack(1.7)',
+        duration: 150,
+      }"
+      [animeLeave]="{
+        height: 0,
+        ease: 'inBack(1.7)',
+        duration: 200
+      }"
+    >
+      <img class="w-full h-full" src="angular-logo.svg" alt="angular logo">
+    </div>
+  }
+</div>

@@ -8,7 +8,8 @@
     "build-lib": "ng build ngx-anime",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ng-anime": "node dist/ng-anime/server/server.mjs"
+    "serve:ssr:ng-anime": "node dist/ng-anime/server/server.mjs",
+    "publish": "cd dist/ngx-anime && npm publish --access public"
   },
   "private": true,
   "packageManager": "bun@1.3.1",
@@ -25,7 +26,7 @@
     "@ng-web-apis/common": "^5.2.0",
     "animejs": "^4.3.6",
     "express": "^5.1.0",
-    "ngx-animejs": "^0.0.2",
+    "ngx-animejs": "^0.0.3",
     "rxjs": "~7.8.0",
     "shiki": "^4.0.2",
     "tailwindcss": "^4.2.2",

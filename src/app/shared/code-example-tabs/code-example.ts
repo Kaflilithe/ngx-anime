@@ -7,12 +7,13 @@ import {
   ElementRef,
   input,
   signal,
-  viewChild,
+  viewChild
 } from '@angular/core';
 import { Tabs } from './tabs';
 import { Tab } from '@/app/shared/code-example-tabs/tabs/tab/index';
 import { Highlight } from '@/app/shared/highlight/highlight';
-import { AnimeEnter, AnimeLeave } from 'ngx-animejs';
+import { AnimeLeave } from 'ngx-animejs';
+import { animate } from 'animejs';
 
 enum TabType {
   HTML,
@@ -28,7 +29,7 @@ const tabTypeToLabel: Record<TabType, string> = {
 
 @Component({
   selector: 'app-code-example',
-  imports: [CommonModule, Tabs, Tab, Highlight, AnimeEnter, AnimeLeave],
+  imports: [CommonModule, Tabs, Tab, Highlight, AnimeLeave],
   templateUrl: './code-example.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -52,21 +53,36 @@ export class CodeExample {
   tabType = TabType;
   tabTypeToLabel = tabTypeToLabel;
 
-  highlight = viewChild<ElementRef<HTMLElement>>('tabContent');
+  tabContent = viewChild<ElementRef<HTMLElement>>('tabContent');
   codeHeight = signal<string | number>(0);
 
   constructor() {
     effect(() => {
-      const ref = this.highlight();
+      const ref = this.tabContent();
       const height = ref?.nativeElement?.offsetHeight || 0;
       this.codeHeight.set(height);
     });
-  }
 
-  animeComplete = () => {
-    const el = this.highlight()?.nativeElement;
-    if (el) {
-      el.style.removeProperty('height');
-    }
-  };
+    effect(() => {
+      this.activeTab();
+      const tabContent = this.tabContent()?.nativeElement;
+
+      if (tabContent) {
+        setTimeout(() => {
+          const height = Array.from(tabContent.children).reduce((height, child) => {
+            if (child instanceof HTMLElement) {
+              height += child.scrollHeight;
+            }
+            return height;
+          }, 0);
+
+          animate(tabContent, {
+            height,
+            ease: 'inOutSine',
+            duration: 400,
+          });
+        });
+      }
+    });
+  }
 }

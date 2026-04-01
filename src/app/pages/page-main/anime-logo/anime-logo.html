@@ -1,10 +1,9 @@
 <div class="flex flex-col gap-3 w-25">
-  <button class="btn btn-ghost" (click)="show.set(!show())">Toggle</button>
-
   @if (show()) {
     <div
+      class="h-[70px]"
       [animeEnter]="{
-        height: [0, 40],
+        height: [0, 70],
         ease: 'outBack(1.7)',
         duration: 150,
       }"
@@ -14,7 +13,18 @@
         duration: 200
       }"
     >
-      <img class="w-full h-full" src="angular-logo.svg" alt="angular logo">
+      <div #animeEl class="w-full h-full" [animeEnter]="loopAnime">
+        <img class="w-full h-full" src="angular-logo.svg" alt="angular logo">
+      </div>
     </div>
   }
+
+  <footer class="flex justify-center gap-2">
+    <button class="btn btn-ghost" (click)="show.set(!show())">
+      {{ show() ? 'Hide' : 'Show' }}
+    </button>
+    <button class="btn btn-ghost" [disabled]="!show()" (click)="rotations.set(rotations() + 1)">
+      Rotate
+    </button>
+  </footer>
 </div>

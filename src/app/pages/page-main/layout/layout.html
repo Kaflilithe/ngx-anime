@@ -1,0 +1,12 @@
+<div class="max-w-50">
+  <div [animeLayout]="className()" [params]="{duration: 240, ease: 'outBack(1.7)'}" class="flex gap-2">
+    <div class="w-full h-20 bg-primary rounded"></div>
+    <div class="w-full h-20 bg-primary rounded"></div>
+    <div class="w-full h-20 bg-primary rounded"></div>
+    <div class="w-full h-20 bg-primary rounded"></div>
+  </div>
+</div>
+
+<button class="btn btn-ghost" (click)="className.set('flex gap-2')">Row</button>
+<button class="btn btn-ghost" (click)="className.set('flex flex-col gap-2')">Col</button>
+<button class="btn btn-ghost" (click)="className.set('grid gap-2 grid-cols-2')">Grid</button>

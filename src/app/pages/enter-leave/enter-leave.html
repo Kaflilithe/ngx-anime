@@ -1,0 +1,7 @@
+<app-code-example
+  ngSkipHydration
+  [html]="animeLogo.HTML | async"
+  [ts]="animeLogo.TS | async"
+>
+  <ng-container *ngComponentOutlet="animeLogo.component | async" />
+</app-code-example>

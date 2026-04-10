@@ -1,23 +1,40 @@
 <div class="drawer lg:drawer-open">
-  <input id="my-drawer-4" type="checkbox" [checked]="expand()" class="drawer-toggle" />
+  <input id="my-drawer-4" type="checkbox" [(ngModel)]="expand" class="drawer-toggle" />
   <div class="drawer-content">
     <ng-content />
   </div>
   <!--  is-drawer-close:hidden-->
   <div class="drawer-side z-70">
     <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay" (click)="expand.set(!expand())"></label>
-    <div class="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+    <div class="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-64 is-drawer-open:w-64">
       <div class="w-full p-2.5">
-        <a class="btn btn-block btn-ghost">
+        <a class="btn btn-block btn-ghost" routerLink="/">
           <app-angular-logo />
         </a>
         <div class="divider my-1"></div>
-        <div class="flex gap-1">
-          <p class="font-semibold is-drawer-close:hidden">Packages</p>
-        </div>
+
         <ul class="menu menu-xs bg-base-200 rounded-box max-w-xs w-full font-semibold">
+          <li>
+            <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="menu-active">
+              <svg lucideCombine></svg>
+              <p class=" text-lg">Enter</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/layout" routerLinkActive="menu-active">
+              <svg lucideLayoutTemplate></svg>
+              <p class=" text-lg">Layout</p>
+            </a>
+          </li>
         </ul>
+
       </div>
+      <div class="flex-1"></div>
+      <a class="btn btn-block btn-ghost lg:hidden" (click)="expand.set(false)">
+        <svg lucidePanelLeftClose></svg>
+      </a>
+
+
     </div>
   </div>
 </div>
